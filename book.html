@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Details</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Book Details</h1>
+    <p id="title1"></p>
+    <p id="author2"></p>
+    <ul id="genres"></ul>
+
+    <script>
+        // JSON Data
+        const books = [
+            {
+                "title": "The Great Gatsby",
+                "author": "F. Scott Fitzgerald",
+                "publicationYear": 1925,
+                "genres": ["Fiction", "Classics"]
+            },
+            {
+                "title": "To Kill a Mockingbird",
+                "author": "Harper Lee",
+                "publicationYear": 1960,
+                "genres": ["Fiction", "Coming-of-Age"]
+            }
+        ];
+
+        // Using jQuery to dynamically display the required details
+        $(document).ready(function () {
+            // Display the title of the first book
+            $("#title1").text("Title of the first book: " + books[0].title);
+
+            // Display the author of the second book
+            $("#author2").text("Author of the second book: " + books[1].author);
+
+            // Display the genres of all books
+            books.forEach(book => {
+                book.genres.forEach(genre => {
+                    $("#genres").append("<li>" + genre + "</li>");
+                });
+            });
+
+            // Log the details to the console as well
+            console.log("Title of the first book:", books[0].title);
+            console.log("Author of the second book:", books[1].author);
+            console.log("Genres of all books:", books.flatMap(book => book.genres));
+        });
+    </script>
+</body>
+</html>
